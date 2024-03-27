@@ -2,6 +2,7 @@ package com.submission.fundamental.ui
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -33,6 +34,20 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.isLoading.observe(this) {
             showLoading(it)
+        }
+
+        with(binding){
+            searchView.setupWithSearchBar(searchBar)
+            searchView
+                .editText
+                .setOnEditorActionListener{ _, _, _ ->
+                    mainViewModel.searchUsers(searchView.text.toString())
+                    searchBar.setText(searchView.text)
+                    searchView.hide()
+                    Toast.makeText(this@MainActivity, searchView.text, Toast.LENGTH_SHORT).show()
+                    false
+
+                }
         }
     }
 

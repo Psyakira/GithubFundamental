@@ -6,4 +6,5 @@
     <string name="description">Deskripsi</string>
     <string name="detail">Detail</string>
     <string name="btn">tombol</string>
+    <string name="searchbar_hint">Ketik Nama</string>
 </resources>
