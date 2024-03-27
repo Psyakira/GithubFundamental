@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Fundamental</string>
+
+    <string name="username">Username</string>
+    <string name="name">Nama</string>
+    <string name="description">Deskripsi</string>
+    <string name="detail">Detail</string>
+    <string name="btn">tombol</string>
+</resources>
