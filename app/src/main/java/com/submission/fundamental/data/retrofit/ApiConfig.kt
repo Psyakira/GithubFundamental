@@ -15,16 +15,20 @@ class ApiConfig {
             val authInterceptor = Interceptor { chain ->
                 val req = chain.request()
                 val requestHeader = req.newBuilder()
-                    .addHeader("Authorization", "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")
+                    .addHeader("Authorization", "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")
                     .build()
                 chain.proceed(requestHeader)
-
             }
 
-            val client = OkHttpClient.Builder().addInterceptor(loggingInterceptor)
-                .addInterceptor(authInterceptor).build()
-            val retrofit = Retrofit.Builder().baseUrl("https://api.github.com/")
-                .addConverterFactory(GsonConverterFactory.create()).client(client).build()
+            val client = OkHttpClient.Builder()
+                .addInterceptor(loggingInterceptor)
+                .addInterceptor(authInterceptor)
+                .build()
+            val retrofit = Retrofit.Builder()
+                .baseUrl("https://api.github.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
+                .build()
             return retrofit.create(ApiService::class.java)
         }
     }

@@ -1,4 +1,5 @@
 package com.submission.fundamental.ui
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,11 +22,18 @@ class ItemAdapter : ListAdapter<ItemsItem, ItemAdapter.ItemViewHolder>(DIFF_CALL
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val user = getItem(position)
         holder.bind(user)
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, DetailUser::class.java)
+            intent.putExtra(DetailUser.KEY_NAME, user.login)
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     class ItemViewHolder(private val binding:ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(user: ItemsItem) {
-            binding.tvName.text = user.login
+            binding.tvName.text = user.type
+            binding.tvUser.text = user.login
             Glide.with(itemView.context).load(user.avatarUrl).into(binding.imgAva)
         }
     }
@@ -41,32 +49,3 @@ class ItemAdapter : ListAdapter<ItemsItem, ItemAdapter.ItemViewHolder>(DIFF_CALL
         }
     }
 }
-
-//class ItemAdapter(private val users: List<ItemsItem>) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
-//
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-//        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list, parent, false)
-//        return ItemViewHolder(view)
-//    }
-//
-//    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-//        val user = users[position]
-//        holder.bind(user)
-//    }
-//
-//    override fun getItemCount() = users.size
-//
-//    class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-//        fun bind(user: ItemsItem) {
-//            itemView.apply {
-//                binding.tvItem.text = user.login
-//                Glide.with(this)
-//                    .load(user.avatarUrl)
-//                    .placeholder(R.drawable.placeholder_image) // Placeholder image jika avatar belum terload
-//                    .error(R.drawable.error_image) // Image error jika gagal load avatar
-//                    .into(avatarImageView)
-//            }
-//        }
-//    }
-//}
-
