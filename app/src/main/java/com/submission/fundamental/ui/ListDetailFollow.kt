@@ -1,4 +1,4 @@
-package com.submission.fundamental
+package com.submission.fundamental.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -11,8 +11,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.submission.fundamental.data.response.ItemsItem
 import com.submission.fundamental.databinding.FragmentListDetailFollowBinding
-import com.submission.fundamental.ui.DetailViewModel
-import com.submission.fundamental.ui.ItemAdapter
 
 class ListDetailFollow : Fragment() {
     private val detailUserViewModel by viewModels<DetailViewModel>()
@@ -57,7 +55,7 @@ class ListDetailFollow : Fragment() {
         detailUserViewModel.listFollow.observe(viewLifecycleOwner) {
             setData(it)
         }
-
+// menyatakan position fragment pada tab layout tanpa membuat dua class berbeda
         if (position == 1) {
             detailUserViewModel.getFollowers(username)
         } else {

@@ -50,7 +50,7 @@ class DetailUser : AppCompatActivity() {
         TabLayoutMediator(tabs, viewPager2) { tab, position ->
             tab.text = TAB_TITLES[position]
         }.attach()
-
+        supportActionBar?.elevation = 0f
     }
 
     private fun setData(user: DetailUserResponse) {

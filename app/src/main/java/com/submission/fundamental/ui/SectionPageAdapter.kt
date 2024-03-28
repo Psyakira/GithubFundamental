@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.submission.fundamental.ListDetailFollow
 
 class SectionsPageAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
     var username: String = ""
@@ -17,6 +16,13 @@ class SectionsPageAdapter(activity: AppCompatActivity) : FragmentStateAdapter(ac
         }
         return fragment
     }
+// Pada function ListDetailFollow sudah disebutkan
+// Jika fragment = 1 maka followers jika tidak maka following
+// sehingga tidak diperlukan lagi Deklarasi, seperti
+//            0 -> fragment = FollowersFragment()
+//            1 -> fragment = ProfileFragment()
+
+
 
     override fun getItemCount(): Int {
         return 2
